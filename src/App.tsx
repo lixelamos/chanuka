@@ -32,7 +32,7 @@ function App() {
             href="#apply"
             className="apply-by-sms-cta apply-by-sms-blink rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow"
           >
-            Apply by SMS
+            Click to apply
           </a>
         </div>
       </header>
@@ -43,7 +43,7 @@ function App() {
             Quality education for every bright child.
           </h1>
           <p className="mt-2 text-center text-sm text-slate-600">
-            Send SMS to <strong>{SMS_SHORTCODE}</strong> with Admission No, Full Name, School. Ksh 2 per SMS.
+            Click below to apply via SMS to <strong>{SMS_SHORTCODE}</strong> with Admission No, Full Name, School. Ksh 2 per SMS.
           </p>
 
           {/* How it works – 3 steps */}
@@ -95,7 +95,7 @@ function App() {
             onClick={handleParticipate}
             className="participate-btn mx-auto mt-8 block w-full max-w-4xl rounded-xl py-4 text-base font-bold uppercase tracking-wide text-white transition focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2"
           >
-            {copied ? `Copied! Open Messages and send to ${SMS_SHORTCODE}` : `Send SMS to ${SMS_SHORTCODE} to apply`}
+            {copied ? `Copied! Open Messages and send to ${SMS_SHORTCODE}` : 'Click here to apply'}
           </button>
 
           {/* FAQ – compact */}
