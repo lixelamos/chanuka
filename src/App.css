@@ -1,0 +1,47 @@
+/* Apply by SMS – solid blue, blink via glow (no opacity so it stays visible) */
+.apply-by-sms-cta {
+  background-color: #0057A5;
+  color: #fff;
+}
+
+@keyframes apply-blink-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 87, 165, 0.6), 0 4px 14px rgba(0, 87, 165, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 87, 165, 0.2), 0 6px 20px rgba(0, 87, 165, 0.6);
+  }
+}
+
+@keyframes participate-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 87, 165, 0.5), 0 4px 14px rgba(0, 87, 165, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(0, 87, 165, 0), 0 6px 22px rgba(0, 87, 165, 0.55);
+    transform: scale(1.02);
+  }
+}
+
+.participate-btn {
+  background-color: #0057A5;
+  color: #fff;
+  animation: participate-pulse 2s ease-in-out infinite;
+}
+
+.participate-btn:hover {
+  animation: none;
+  background-color: #004a8f;
+  box-shadow: 0 6px 22px rgba(0, 87, 165, 0.55);
+  transform: scale(1.03);
+}
+
+.apply-by-sms-blink {
+  animation: apply-blink-glow 1.5s ease-in-out infinite;
+}
+
+.apply-by-sms-blink:hover {
+  animation: none;
+  box-shadow: 0 4px 14px rgba(0, 87, 165, 0.4);
+}
