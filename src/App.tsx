@@ -5,7 +5,7 @@ import chanukaLogoB from './assets/Chanuka-b.svg'
 import './App.css'
 
 const SMS_SHORTCODE = '23702'
-const APPLY_URL = 'https://lyle.pesa.solutions/noSafData/#missing-msisdn'
+const APPLY_URL = 'https://lyle.pesa.solutions/gameLoader/?game=sport-quest'
 
 function App() {
   const handleCopyShortcode = async () => {
