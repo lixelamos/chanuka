@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import chanukaKids from './assets/chanuka-kids.png'
 import chanukaStudents from './assets/chanuka-students.png'
 import chanukaLogoA from './assets/chanuka-a.svg'
@@ -5,12 +6,15 @@ import chanukaLogoB from './assets/Chanuka-b.svg'
 import './App.css'
 
 const SMS_SHORTCODE = '23702'
-const APPLY_URL = 'https://lyle.pesa.solutions/gameLoader/?game=sport-quest'
 
 function App() {
-  const handleCopyShortcode = async () => {
+  const [copied, setCopied] = useState(false)
+
+  const handleParticipate = async () => {
     try {
       await navigator.clipboard.writeText(SMS_SHORTCODE)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
     } catch {
       window.location.href = `sms:${SMS_SHORTCODE}`
     }
@@ -24,14 +28,13 @@ function App() {
             <img src={chanukaLogoA} alt="Chanuka Bursary" className="h-8 w-auto" />
             <span className="text-sm font-semibold text-slate-800">Chanuka Bursary</span>
           </div>
-          <a
-            href={APPLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="apply-by-sms-cta apply-by-sms-blink inline-block rounded-full px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-white shadow no-underline"
+          <button
+            type="button"
+            onClick={handleParticipate}
+            className="apply-by-sms-cta apply-by-sms-blink rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow"
           >
             Click to apply
-          </a>
+          </button>
         </div>
       </header>
 
@@ -65,7 +68,7 @@ function App() {
             <div className="grid grid-cols-2 gap-5 sm:gap-6 md:gap-8">
               <button
                 type="button"
-                onClick={handleCopyShortcode}
+                onClick={handleParticipate}
                 className="group flex aspect-[3/4] min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2"
               >
                 <img
@@ -76,7 +79,7 @@ function App() {
               </button>
               <button
                 type="button"
-                onClick={handleCopyShortcode}
+                onClick={handleParticipate}
                 className="group flex aspect-[3/4] min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2"
               >
                 <img
@@ -88,14 +91,13 @@ function App() {
             </div>
           </div>
 
-          <a
-            href={APPLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="participate-btn mx-auto mt-8 block w-full max-w-4xl rounded-xl py-4 text-center text-base font-bold uppercase tracking-wide text-white transition focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2 no-underline"
+          <button
+            type="button"
+            onClick={handleParticipate}
+            className="participate-btn mx-auto mt-8 block w-full max-w-4xl rounded-xl py-4 text-base font-bold uppercase tracking-wide text-white transition focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2"
           >
-            Click here to apply
-          </a>
+            {copied ? `Copied! Open Messages and send to ${SMS_SHORTCODE}` : 'Click here to apply'}
+          </button>
 
           {/* FAQ – compact */}
           <dl className="mx-auto mt-6 w-full max-w-4xl space-y-2 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-xs shadow-sm">
