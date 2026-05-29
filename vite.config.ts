@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Dev-only proxy to avoid CORS when calling Safaricom Identity API from the browser.
-      // In production, configure your hosting (nginx/vercel/railway) to proxy this path similarly.
+      // Optional legacy path — does NOT pass Safaricom mobile-network auth (always 401 from laptop).
+      // The app calls identity.safaricom.com directly from the browser instead.
       '/safaricom': {
         target: 'https://identity.safaricom.com',
         changeOrigin: true,
