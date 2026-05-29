@@ -8,7 +8,8 @@ import './App.css'
 const SMS_SHORTCODE = '23702'
 
 /** Safaricom Identity API – verifies user is on Safaricom data (returns masked MSISDN when on Safaricom) */
-const SAFARICOM_FETCH_MSISDN_URL = 'https://identity.safaricom.com/partner/api/v2/fetchMaskedMsisdn'
+// Use same-origin path to avoid browser CORS; Vite proxies this in dev (see `vite.config.ts`).
+const SAFARICOM_FETCH_MSISDN_URL = '/safaricom/partner/api/v2/fetchMaskedMsisdn'
 /** Optional override: your own API that returns { allowed: boolean } or 403. Set in .env as VITE_CHECK_CARRIER_URL */
 const CHECK_CARRIER_URL = import.meta.env.VITE_CHECK_CARRIER_URL
 
@@ -83,8 +84,9 @@ function App() {
     try {
       const res = await fetch(SAFARICOM_FETCH_MSISDN_URL, {
         method: 'GET',
-        mode: 'cors',
         headers: { Accept: 'application/json' },
+        // Safaricom Identity may set cookies used for verification flows.
+        credentials: 'include',
       })
       return res.ok
     } catch {
@@ -192,7 +194,7 @@ function App() {
                 type="button"
                 onClick={handleParticipate}
                 disabled={checkingSafaricom}
-                className="group flex aspect-[3/4] min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2 disabled:opacity-70"
+                className="group flex aspect-3/4 min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2 disabled:opacity-70"
               >
                 <img
                   src={chanukaKids}
@@ -204,7 +206,7 @@ function App() {
                 type="button"
                 onClick={handleParticipate}
                 disabled={checkingSafaricom}
-                className="group flex aspect-[3/4] min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2 disabled:opacity-70"
+                className="group flex aspect-3/4 min-h-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-md transition hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0057A5] focus:ring-offset-2 disabled:opacity-70"
               >
                 <img
                   src={chanukaStudents}
