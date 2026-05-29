@@ -61,3 +61,12 @@
   border-radius: 50%;
   animation: verify-spin 0.9s linear infinite;
 }
+
+/* Subscribe & pay (Star Games–style CTA) */
+.subscribe-pay-btn {
+  background-color: #16a34a;
+}
+
+.subscribe-pay-btn:hover:not(:disabled) {
+  background-color: #15803d;
+}
